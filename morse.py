@@ -37,10 +37,18 @@ morse_dict = {
     "0": "_____"
 }
 
-if __name__ == "__main__":
 
-    text = input("Insert your text to convert to morse: ").strip()
-    morse_text = [morse_dict[letter] for letter in text.lower()]
-
+def text_to_morse():
+    text = input("Insert your text to convert to morse: ").strip(' ')
+    morse_text = [morse_dict[letter] for letter in text if letter != " "]
     x = " ".join(morse_text)
-    input(x)
+    return x
+
+
+if __name__ == "__main__":
+    on = True
+    while on:
+        result = text_to_morse()
+        choice = input(f"{result}\nDo you wanna try again? Y/N: ").lower()
+        if choice == "n":
+            on = False
